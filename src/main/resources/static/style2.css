@@ -1,0 +1,54 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	font-family: 'Poppins', sans-serif;
+    background-color: rgba(25,220,250,0.8);
+    color: #fff;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center
+}
+
+.box{
+    min-width: 525px;
+    height: 700px;
+    background: #fff;
+    border-radius: 10px;
+    background-image: url('assets/images/background\ 3.jpg');
+    background-size: cover
+}
+
+#txt{
+	font-size: 20px;
+	bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+    font-size: 40px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.signupBox{
+    margin-top: 12%;
+}
+
+input{
+    margin-left: 33%;
+    border-radius: 10px;
+    height: 30px;
+	border: 0.3px solid;
+    margin-top: 10px;
+    padding-left: 20px;
+}
