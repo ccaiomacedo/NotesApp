@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/src/main/resources/static/style2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="script.js"></script>
     <title>signUp</title>
 </head>
 <body>
-  
     <div class="container">
         <div class="box">
         <h2 id="txt">SignUp</h2>
@@ -19,40 +19,36 @@
 
                     <div class="row">
                         <div class="input-field col s6">
-                          <input  id="first_name2" type="text" class="validate">
+                          <input  id="nome" type="text" class="validate">
                           <label class="active" for="first_name2">First Name</label>
                         </div>
                       </div>
 
                       <div class="row">
-                        <form class="col s12">
-                          <div class="row">
-                            <div class="input-field col s12">
-                              <input id="email" type="email" class="validate">
-                              <label for="email">Email</label>
-                              <span class="helper-text" data-error="wrong" data-success="right"></span>
-                            </div>
-                          </div>
-                        </form>
+                        <div class="input-field col s6">
+                          <input  id="email" type="email" class="validate">
+                          <label class="active" for="first_name2">Email</label>
+                        </div>
                       </div>
 
                       <div class="row">
                         <div class="input-field col s6">
-                          <input  id="first_name2" type="text" class="validate">
+                          <input  id="username" type="text" class="validate">
                           <label class="active" for="first_name2">Username</label>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="input-field col s6">
-                          <input  id="first_name2" type="text" class="validate">
+                          <input  id="senha" type="password" class="validate" placeholder="minimo 6 digitos...">
                           <label class="active" for="first_name2">Password</label>
                         </div>
                       </div>
-                      <a href="index.html" style="margin-left: 38%;" class="waves-effect waves-light btn-large">Sign UP</a>
+                      <a onclick="clicar()"  style="margin-left: 38%;" class="waves-effect waves-light btn-large">Sign UP</a>
                     </div>
             </form>        
         </div>
     </div>
 </body>
+
 </html>
