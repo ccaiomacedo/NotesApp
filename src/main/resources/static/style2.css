@@ -23,7 +23,7 @@ body{
     height: 700px;
     background: #fff;
     border-radius: 10px;
-    background-image: url('assets/images/background\ 3.jpg');
+    background-image: url('/src/main/resources/static/assets/images/background\ 3.jpg');
     background-size: cover
 }
 
