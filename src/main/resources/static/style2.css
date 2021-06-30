@@ -7,6 +7,10 @@ body{
 	font-family: 'Poppins', sans-serif;
     background-color: rgba(25,220,250,0.8);
     color: #fff;
+    background-image: url('/src/main/resources/static/assets/images/back-principal.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.8;
 }
 
 .container {
@@ -51,4 +55,7 @@ input{
 	border: 0.3px solid;
     margin-top: 10px;
     padding-left: 20px;
+    color: #fff;
 }
+
+
