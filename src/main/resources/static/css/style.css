@@ -11,7 +11,7 @@ body{
 /* -------- Login Page ---------*/
 
 #login-back {
-	background: url('/src/main/resources/static/assets/images/fundo.jpg') no-repeat;
+	background: url('/assets/images/fundo.jpg') no-repeat;
 }
 
 .container{
