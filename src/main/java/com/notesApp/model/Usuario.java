@@ -1,9 +1,7 @@
 package com.notesApp.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Usuario{
@@ -13,6 +11,7 @@ public class Usuario{
     private long id;
     private String name;
     private String email;
+    @Column(unique = true)//garante que apenas um usuário pode ter esse username
     private String username;
     private String password;
 

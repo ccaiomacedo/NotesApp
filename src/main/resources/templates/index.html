@@ -13,10 +13,10 @@
 			<div class="login-box">
 				<h2>Welcome Back</h2>
 				<h2 id="txt">LOGIN</h2>
+
 				<form action="/login" method="post" th:object="${usuario}">
-					<div th:if="${msg}">
-						<strong th:text="${msg}"></strong>
-					</div>
+					<div th:text="${msg}" th:if="${msg!=null}"> </div>
+
 					<div>
 						<input th:field="*{username}" class="text" type="text"placeholder="Username">
 					</div>
@@ -30,7 +30,7 @@
 					</div>
 						 
 					<div>
-						<a href="#"><input class="submit" type="submit" value="sign in"></a> 
+						<a><input class="submit" type="submit" value="sign in"></a>
 					</div>
 
 					
