@@ -1,6 +1,7 @@
 package com.notesApp.service;
 
 import com.notesApp.exception.CriptoExistException;
+import com.notesApp.exception.EmailException;
 import com.notesApp.model.Usuario;
 import com.notesApp.repository.UserRepository;
 import com.notesApp.util.Util;
@@ -19,6 +20,9 @@ public class UserService {
 
     public void saveUser(Usuario user) throws Exception{
         try{
+            if(ur.findByEmail(user.getEmail())!=null){
+                throw new EmailException("Já existe um email cadastrado como: "+user.getEmail());
+            }
             user.setPassword(Util.md5(user.getPassword()));
         }catch (NoSuchAlgorithmException e) {
             throw new CriptoExistException("Erro na criptografia da senha");

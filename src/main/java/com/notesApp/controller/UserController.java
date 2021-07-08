@@ -1,4 +1,5 @@
 package com.notesApp.controller;
+import com.notesApp.exception.ServiceException;
 import com.notesApp.model.Usuario;
 
 import com.notesApp.repository.UserRepository;
@@ -46,7 +47,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ModelAndView login(HttpSession session,Usuario user) throws NoSuchAlgorithmException {
+    public ModelAndView login(HttpSession session,Usuario user) throws NoSuchAlgorithmException, ServiceException {
         ModelAndView mv = new ModelAndView();
         Usuario loginUser = ur.findLogin(user.getUsername(), Util.md5(user.getPassword()));
         if(loginUser==null){
@@ -58,6 +59,7 @@ public class UserController {
         return mv;
     }
 
+    @PostMapping("/logout")
     public ModelAndView logout(HttpSession session){
         session.invalidate();
         return index();

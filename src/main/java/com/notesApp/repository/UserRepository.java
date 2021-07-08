@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 public interface UserRepository extends JpaRepository<Usuario,Long>{
 
+    @Query("select e from Usuario e where e.email=:email")
+    public Usuario findByEmail(String email);
+
     @Query("select a from Usuario a where a.username=:user and a.password=:password")
     public Usuario findLogin(String user,String password);
 
