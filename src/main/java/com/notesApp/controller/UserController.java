@@ -2,6 +2,8 @@ package com.notesApp.controller;
 import com.notesApp.model.Usuario;
 
 import com.notesApp.repository.UserRepository;
+import com.notesApp.service.UserService;
+import com.notesApp.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,12 +11,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.security.NoSuchAlgorithmException;
 
 @Controller
 public class UserController {
 
     @Autowired
     private UserRepository ur;
+    @Autowired
+    private UserService us;
 
     @GetMapping("/")
     public ModelAndView index() {
@@ -35,16 +40,15 @@ public class UserController {
     @PostMapping("/insertUser")
     public ModelAndView insert(Usuario user) throws Exception{
         ModelAndView mv = new ModelAndView();
-        ur.save(user);
+        us.saveUser(user);
         mv.setViewName("redirect:/");
         return mv;
-
     }
 
     @PostMapping("/login")
-    public ModelAndView login(HttpSession session,Usuario user){
+    public ModelAndView login(HttpSession session,Usuario user) throws NoSuchAlgorithmException {
         ModelAndView mv = new ModelAndView();
-        Usuario loginUser = ur.findLogin(user.getUsername(),user.getPassword());
+        Usuario loginUser = ur.findLogin(user.getUsername(), Util.md5(user.getPassword()));
         if(loginUser==null){
             mv.addObject("msg","Usuário ou senha errado!");
         }else{
@@ -52,6 +56,11 @@ public class UserController {
             mv.setViewName("home");
         }
         return mv;
+    }
+
+    public ModelAndView logout(HttpSession session){
+        session.invalidate();
+        return index();
     }
 
 
