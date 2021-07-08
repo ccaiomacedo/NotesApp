@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" type="text/css" href="css/style2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="js/script.js"></script>
     <title>signUp</title>
@@ -14,37 +14,37 @@
         <div class="box">
         <h2 id="txt">SignUp</h2>
 
-            <form>
+            <form action="/insertUser" method="post" th:object="${usuario}">
                 <div class="signupBox">
 
                     <div class="row">
                         <div class="input-field col s6">
-                          <input  id="nome" type="text" class="validate">
+                          <input   th:field="*{name}" type="text" class="validate">
                           <label class="active" for="first_name2">First Name</label>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="input-field col s6">
-                          <input  id="email" type="email" class="validate">
+                          <input th:field="*{email}"   type="email" class="validate">
                           <label class="active" for="first_name2">Email</label>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="input-field col s6">
-                          <input  id="username" type="text" class="validate">
+                          <input th:field="*{username}"  type="text" class="validate">
                           <label class="active" for="first_name2">Username</label>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="input-field col s6">
-                          <input  id="senha" type="password" class="validate" placeholder="minimo 6 digitos...">
+                          <input th:field="*{password}"  type="password" class="validate" placeholder="minimo 6 digitos...">
                           <label class="active" for="first_name2">Password</label>
                         </div>
                       </div>
-                      <a onclick="clicar()"  style="margin-left: 38%;" class="waves-effect waves-light btn-large">Sign UP</a>
+                    <button type="submit"onclick="clicar()"  style="margin-left: 38%;" class="waves-effect waves-light btn-large">Sign UP</button>
                     </div>
             </form>        
         </div>

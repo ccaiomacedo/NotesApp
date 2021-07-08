@@ -1,11 +1,9 @@
-package com.notesApp.NotesApp;
+package com.notesApp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 
-@SpringBootApplication
-@ComponentScan({"com.notesApp.Controller"})
+@SpringBootApplication()
 public class NotesAppApplication {
 
 	public static void main(String[] args) {
