@@ -8,18 +8,18 @@ public class Usuario{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Integer id;
     private String name;
     private String email;
     @Column(unique = true)//garante que apenas um usuário pode ter esse username
     private String username;
     private String password;
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

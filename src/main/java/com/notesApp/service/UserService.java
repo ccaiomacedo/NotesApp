@@ -5,6 +5,7 @@ import com.notesApp.exception.EmailException;
 import com.notesApp.model.Usuario;
 import com.notesApp.repository.UserRepository;
 import com.notesApp.util.Util;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
