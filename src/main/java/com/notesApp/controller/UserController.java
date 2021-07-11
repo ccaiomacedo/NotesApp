@@ -49,17 +49,17 @@ public class UserController {
     }
    
     @PostMapping("/login")
-    public ModelAndView login(HttpSession session,Usuario user,RedirectAttributes ra) throws NoSuchAlgorithmException, ServiceException {
+    public String login(HttpSession session,Usuario user,RedirectAttributes ra) throws NoSuchAlgorithmException, ServiceException {
         ModelAndView mv = new ModelAndView();
         Usuario loginUser = ur.findLogin(user.getUsername(), Util.md5(user.getPassword()));
         if(loginUser!=null){
             session.setAttribute("usuarioLogado",loginUser);
-            mv.setViewName("home");
+            return "home";
         }else{
-        	ra.addFlashAttribute("msg","login/senha errado!");
-            return index();
+        	ra.addFlashAttribute("msg","Login/senha invalidos!");
+			return "redirect:/";
         }
-        return mv;
+ 
     }
 
     @GetMapping("/logout")
