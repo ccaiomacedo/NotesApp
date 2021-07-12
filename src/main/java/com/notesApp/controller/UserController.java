@@ -1,4 +1,5 @@
 package com.notesApp.controller;
+
 import java.security.NoSuchAlgorithmException;
 
 import javax.servlet.http.HttpSession;
@@ -19,54 +20,64 @@ import com.notesApp.util.Util;
 @Controller
 public class UserController {
 
-    @Autowired
-    private UserRepository ur;
-    @Autowired
-    private UserService us;
+	@Autowired
+	private UserRepository ur;
+	@Autowired
+	private UserService us;
 
-    @GetMapping("/")
-    public ModelAndView index() {
-        ModelAndView mv = new ModelAndView();
-        mv.addObject("usuario",new Usuario());
-        mv.setViewName("index");
-        return mv;
-    }
+	@GetMapping("/")
+	public ModelAndView index() {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("usuario", new Usuario());
+		mv.setViewName("index");
+		return mv;
+	}
 
-    @GetMapping("/home")
-    public ModelAndView cadastro() {
-        ModelAndView mv = new ModelAndView();
-        mv.addObject("usuario",new Usuario());
-        mv.setViewName("signUp");
-        return mv;
-    }
+	@GetMapping("/home")
+	public ModelAndView cadastro() {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("usuario", new Usuario());
+		mv.setViewName("signUp");
+		return mv;
+	}
 
-    @PostMapping("/insertUser")
-    public ModelAndView insert(Usuario user) throws Exception{
-        ModelAndView mv = new ModelAndView();
-        us.saveUser(user);
-        mv.setViewName("redirect:/");
-        return mv;
-    }
-   
-    @PostMapping("/login")
-    public String login(HttpSession session,Usuario user,RedirectAttributes ra) throws NoSuchAlgorithmException, ServiceException {
-        ModelAndView mv = new ModelAndView();
-        Usuario loginUser = ur.findLogin(user.getUsername(), Util.md5(user.getPassword()));
-        if(loginUser!=null){
-            session.setAttribute("usuarioLogado",loginUser);
-            return "home";
-        }else{
-        	ra.addFlashAttribute("msg","Login/senha invalidos!");
+	@PostMapping("/insertUser")
+	public ModelAndView insert(Usuario user) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		us.saveUser(user);
+		mv.setViewName("redirect:/");
+		return mv;
+	}
+
+	@PostMapping("/login")
+	public String login(HttpSession session, Usuario user, RedirectAttributes ra)
+			throws NoSuchAlgorithmException, ServiceException {
+		ModelAndView mv = new ModelAndView();
+		Usuario loginUser = ur.findLogin(user.getUsername(), Util.md5(user.getPassword()));
+		if (loginUser != null) {
+			session.setAttribute("usuarioLogado", loginUser);
+			return "home";
+		} else {
+			ra.addFlashAttribute("msg", "Login/senha invalidos!");
 			return "redirect:/";
-        }
- 
-    }
+		}
 
-    @GetMapping("/logout")
-    public ModelAndView logout(HttpSession session){
-        session.invalidate();
-        return index();
-    }
+	}
 
+	@GetMapping("/login")
+	public String DeniedAcess() {
+		return "deniedAcess";
+	}
+
+	@GetMapping("/insertUser")
+	public String DeniedAcess2() {
+		return "deniedAcess";
+	}
+
+	@GetMapping("/logout")
+	public ModelAndView logout(HttpSession session) {
+		session.invalidate();
+		return index();
+	}
 
 }
